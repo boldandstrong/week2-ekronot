@@ -3,7 +3,6 @@
 #include "DeviceList.h"
 #include <string>
 
-
 class User
 {
 	private:

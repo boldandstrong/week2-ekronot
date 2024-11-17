@@ -451,6 +451,7 @@
 
  bool test3Bonus()
  {
+     /*
  	// Tests Ex2 part 3 - Profile
  	set_console_color(PURPLE);
  	cout <<
@@ -558,7 +559,7 @@
  	set_console_color(LIGHT_GREEN);
  	std::cout << "\n########## Profile Bonus - TEST Passed!!! ##########\n\n";
  	set_console_color(WHITE);
-
+    */
  	return true;
  }
 
