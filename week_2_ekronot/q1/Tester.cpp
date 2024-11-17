@@ -25,12 +25,12 @@ std::string posts[] = { "Hello world!",
 						"Ekronot is the best...",
 						"Happy birthday! Ad 120" };
 
-std::string statusMessages[] = 
-					{"Feeling sick, need chicken soup... can you bring me some?",
-					"Which witch watched which watch??? you must tell me!!!",
-					"Finally got my driver license !!!, when are you getting yours?",
-					"\"No matter how smart you are, you can never convince someone stupid that they are stupid.\"",
-					"Have you ever wondered why you can't taste your tongue?"};
+std::string statusMessages[] =
+{ "Feeling sick, need chicken soup... can you bring me some?",
+"Which witch watched which watch??? you must tell me!!!",
+"Finally got my driver license !!!, when are you getting yours?",
+"\"No matter how smart you are, you can never convince someone stupid that they are stupid.\"",
+"Have you ever wondered why you can't taste your tongue?" };
 
 void set_console_color(unsigned int color)
 {
@@ -72,10 +72,10 @@ std::string getDeviceTypeString(const DeviceType type)
 
 std::string getDeviceString(const Device& device)
 {
-	return 
-		"[ID: " + std::to_string(device.getID()) + 
+	return
+		"[ID: " + std::to_string(device.getID()) +
 		", Type: " + getDeviceTypeString(device.getType()) +
-		", OS: " + device.getOS() + 
+		", OS: " + device.getOS() +
 		", Activated: " + (device.isActive() ? "Yes" : "No") + "]";
 }
 
@@ -84,7 +84,7 @@ std::string getUserString(const User& user)
 	return
 		"[ID: " + std::to_string(user.getID()) +
 		", Username: " + user.getUserName() +
-		", Age: " + std::to_string(user.getAge()) + 
+		", Age: " + std::to_string(user.getAge()) +
 		", All devices On: " + (user.checkIfDevicesAreOn() ? "Yes" : "No") + "]";
 }
 
@@ -110,7 +110,7 @@ std::string getProfileString(const Profile& profile)
 {
 	return
 		"Owner: " + getUserString(profile.getOwner()) + "\n" +
-		profile.getOwner().getUserName() + "'s page:\n" + 
+		profile.getOwner().getUserName() + "'s page:\n" +
 		profile.getPage();
 }
 
@@ -137,7 +137,7 @@ void generateRandomPage(Profile& profile)
 	std::string post;
 	for (unsigned int i = 0; i < numberOfPosts; i++)
 	{
-		post = posts[getRandomInt(0, 4)] ;
+		post = posts[getRandomInt(0, 4)];
 		profile.addPostToProfilePage(post);
 	}
 }
@@ -260,10 +260,10 @@ bool test2User()
 		device4.init(4134, PHONE, ANDROID);
 
 		std::string expected = "[ID: 2123, Type: Laptop, OS: Windows11, Activated: Yes]\n";
-					expected += "[ID: 3212, Type: PC, OS: UbuntuLinux, Activated: Yes]\n";
-					expected += "[ID: 1121, Type: Tablet, OS: Windows10, Activated: Yes]\n";
-					expected += "[ID: 4134, Type: Phone, OS: Android, Activated: Yes]";
-		std::string got = 
+		expected += "[ID: 3212, Type: PC, OS: UbuntuLinux, Activated: Yes]\n";
+		expected += "[ID: 1121, Type: Tablet, OS: Windows10, Activated: Yes]\n";
+		expected += "[ID: 4134, Type: Phone, OS: Android, Activated: Yes]";
+		std::string got =
 			getDeviceString(device1) + "\n" +
 			getDeviceString(device2) + "\n" +
 			getDeviceString(device3) + "\n" +
@@ -274,8 +274,8 @@ bool test2User()
 		{
 			set_console_color(RED);
 			std::cout << "FAILED: Device information is not as expected\n" <<
-						"check functions Device::init(), Device::getID(), \n" <<
-						"Device::getOS(), Device::getType()\n";
+				"check functions Device::init(), Device::getID(), \n" <<
+				"Device::getOS(), Device::getType()\n";
 			return false;
 			set_console_color(WHITE);
 		}
@@ -294,7 +294,7 @@ bool test2User()
 		got =
 			getUserString(user1) + "\n" +
 			getUserString(user2);
-		
+
 		cout << "Expected:\n" << expected << endl;
 		cout << "Got:\n" << got << endl;
 		if (got != expected)
@@ -306,7 +306,7 @@ bool test2User()
 			return false;
 			set_console_color(WHITE);
 		}
-		
+
 		cout <<
 			"\nAdding 2 devices to user1: ... \n" << endl;
 
@@ -525,10 +525,10 @@ bool test3Profile()
 		expected += "Shlomo's page:\nStatus: \n*******************\n*******************\n";
 		expected += "Owner: [ID: 222444666, Username: Rinat, Age: 16, All devices On: Yes]\n";
 		expected += "Rinat's page:\nStatus: \n*******************\n*******************\n";
-		std::string got = 
+		std::string got =
 			getProfileString(profile1) +
 			getProfileString(profile2) +
-			getProfileString(profile3) + 
+			getProfileString(profile3) +
 			getProfileString(profile4) +
 			getProfileString(profile5) +
 			getProfileString(profile6);
@@ -539,16 +539,16 @@ bool test3Profile()
 		{
 			set_console_color(RED);
 			std::cout << "FAILED: Profile information is not as expected\n" <<
-						"check if the profile is initialized properly\n";
+				"check if the profile is initialized properly\n";
 			return false;
 			set_console_color(WHITE);
 		}
 
 		cout <<
 			"Adding friends (all to all): ... \n" << endl;
-		Profile* profiles[] = { (&profile1), (&profile2), &profile3, (&profile4), (&profile5) , (&profile6)};
+		Profile* profiles[] = { (&profile1), (&profile2), &profile3, (&profile4), (&profile5) , (&profile6) };
 		allFriends(profiles, 6);
-		
+
 		cout <<
 			"Printing Gal's friends: ... \n" << endl;
 
@@ -578,7 +578,7 @@ bool test3Profile()
 		{
 			set_console_color(RED);
 			std::cout << "FAILED: Wrong users printed\n" <<
-						"check function Profile::getFriendsWithSameNameLength\n";
+				"check function Profile::getFriendsWithSameNameLength\n";
 			return false;
 			set_console_color(WHITE);
 		}
@@ -695,7 +695,7 @@ bool checkAllWordsAreAlikeInStatus(std::string str)
 
 	while ((pos = str.find('\n')) != std::string::npos)
 		str.replace(pos, 1, "");
-	
+
 	while ((pos = str.find(' ')) != std::string::npos)
 		str.replace(pos, 1, "");
 
@@ -705,7 +705,7 @@ bool checkAllWordsAreAlikeInStatus(std::string str)
 	// removes all the instances of the word
 	while ((pos = str.find(word)) != std::string::npos)
 		str.replace(pos, word.length(), "");
-	
+
 	// if any characters left, return false
 	if (str.length() != 0)
 		return false;
@@ -717,7 +717,7 @@ bool checkWordDoesNotExistInStatus(std::string status, const std::string& word)
 {
 	return status.find(word) == std::string::npos;
 }
-
+/*
 bool test3Bonus()
 {
 	// Tests Ex2 part 3 - Profile
@@ -763,7 +763,7 @@ bool test3Bonus()
 	std::string statusToCheck = profile1.getPage();
 	statusToCheck = statusToCheck.substr(8, statusToCheck.length());
 	statusToCheck = statusToCheck.substr(0, statusToCheck.find_first_of('\n'));
-	
+
 	// if there is one word that is different from the other return false
 	if (checkAllWordsAreAlikeInStatus(statusToCheck) == false)
 	{
@@ -802,7 +802,7 @@ bool test3Bonus()
 	statusToCheck = profile2.getPage();
 	statusToCheck = statusToCheck.substr(8, statusToCheck.length());
 	statusToCheck = statusToCheck.substr(0, statusToCheck.find_first_of('\n'));
-	
+
 	// checks that the word is not in the status
 	if (checkWordDoesNotExistInStatus(statusToCheck, word_to_replace) == false)
 	{
@@ -830,7 +830,7 @@ bool test3Bonus()
 
 	return true;
 }
-
+*/
 bool test4SocialNetwork()
 {
 	bool result = false;
@@ -966,18 +966,18 @@ bool test4SocialNetwork()
 		cout <<
 			"\nTrying to add all users ... \n" << endl;
 
-		std::cout << "profile1 " << 
-			(sn.addProfile(profile1) ? "Added Successfully\n":"Cannot add because user is too young\n");
-		std::cout << "profile2 " << 
-			(sn.addProfile(profile2) ? "Added Successfully\n":"Cannot add because user is too young\n");
-		std::cout << "profile3 " << 
-			(sn.addProfile(profile3) ? "Added Successfully\n":"Cannot add because user is too young\n");
-		std::cout << "profile4 " << 
-			(sn.addProfile(profile4) ? "Added Successfully\n":"Cannot add because user is too young\n");
-		std::cout << "profile5 " << 
-			(sn.addProfile(profile5) ? "Added Successfully\n":"Cannot add because user is too young\n");
-		std::cout << "profile6 " << 
-			(sn.addProfile(profile6) ? "Added Successfully\n":"Cannot add because user is too young\n");
+		std::cout << "profile1 " <<
+			(sn.addProfile(profile1) ? "Added Successfully\n" : "Cannot add because user is too young\n");
+		std::cout << "profile2 " <<
+			(sn.addProfile(profile2) ? "Added Successfully\n" : "Cannot add because user is too young\n");
+		std::cout << "profile3 " <<
+			(sn.addProfile(profile3) ? "Added Successfully\n" : "Cannot add because user is too young\n");
+		std::cout << "profile4 " <<
+			(sn.addProfile(profile4) ? "Added Successfully\n" : "Cannot add because user is too young\n");
+		std::cout << "profile5 " <<
+			(sn.addProfile(profile5) ? "Added Successfully\n" : "Cannot add because user is too young\n");
+		std::cout << "profile6 " <<
+			(sn.addProfile(profile6) ? "Added Successfully\n" : "Cannot add because user is too young\n");
 
 		cout <<
 			"\nAdding friends (all to all): ... \n" << endl;
@@ -1020,7 +1020,7 @@ bool test4SocialNetwork()
 		profile4.clear();
 		profile5.clear();
 		profile6.clear();
-		
+
 		cout <<
 			"\nClears SocialNetwork object: ... \n" << endl;
 		sn.clear();
@@ -1048,10 +1048,10 @@ std::string goodJob()
 {
 	std::string result = "";
 	result += "  ________                  .___      ____.     ___.    \n";
-	result += " /  _____/  ____   ____   __| _/     |    | ____\\_ |__  \n" ;
-	result += "/   \\  ___ /  _ \\ /  _ \\ / __ |      |    |/  _ \\| __ \\ \n" ;
-	result += "\\    \\_\\  (  <_> |  <_> ) /_/ |  /\\__|    (  <_> ) \\_\\ \\ \n" ;
-	result += " \\______  /\\____/ \\____/\\____ |  \\________|\\____/|___  / \n" ;
+	result += " /  _____/  ____   ____   __| _/     |    | ____\\_ |__  \n";
+	result += "/   \\  ___ /  _ \\ /  _ \\ / __ |      |    |/  _ \\| __ \\ \n";
+	result += "\\    \\_\\  (  <_> |  <_> ) /_/ |  /\\__|    (  <_> ) \\_\\ \\ \n";
+	result += " \\______  /\\____/ \\____/\\____ |  \\________|\\____/|___  / \n";
 	result += "        \\/                   \\/                      \\/  \n";
 
 	return result;
@@ -1060,24 +1060,22 @@ std::string goodJob()
 int main()
 {
 	set_console_color(LIGHT_YELLOW);
-	std::cout << 
+	std::cout <<
 		"###########################\n" <<
-		"Exercise 2 - Social Network\n" << 
+		"Exercise 2 - Social Network\n" <<
 		"###########################\n" << std::endl;
 	set_console_color(WHITE);
 
 	bool test1Result = test1Device();
 	bool test2Result = test2User();
 	bool test3Result = test3Profile();
-	bool test3BResult = test3Bonus();
 	bool test4Result = test4SocialNetwork();
 
 	if (test1Result && test2Result && test3Result)
 	{
 		set_console_color(GREEN);
 		std::cout << "\n########## Ex2 Tests Passed!!! ##########\n" << goodJob() <<
-					"\n\t\t\tYou are amazing!!!\n" << 
-					(test3BResult ? "\t\t\tAnd you also did the bonus, that's wonderful!!!" : "") << "\n\n";
+			"\n\t\t\tYou are amazing!!!\n" << "\n\n";
 		set_console_color(WHITE);
 	}
 	else

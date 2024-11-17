@@ -2,37 +2,37 @@
 
 void Device::init(unsigned int ID, DeviceType TYPE, std::string OS)
 {
-	os = OS;
-	type = TYPE;
-	id = ID;
+	this->os = OS;
+	this->type = TYPE;
+	this->id = ID;
 }
 
 unsigned int Device::getID() const
 {
-	return id;
+	return this->id;
 }
 
 DeviceType Device::getType() const
 {
-	return type;
+	return this->type;
 }
  
 std::string Device::getOS() const
 {
-	return os;
+	return this->os;
 }
 
 bool Device::isActive() const
 {
-	return active;
+	return this->active;
 }
 
 void Device::activate()
 {
-	active = true;
+	this->active = true;
 }
 
 void Device::deactivate()
 {
-	active = false;
+	this->active = false;
 }
